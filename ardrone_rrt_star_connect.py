@@ -52,33 +52,33 @@ def choose_neighborhood(tree):
     else:
       return 30
 
-def oscillation_test(new_vertex):
+def collision_test(new_vertex):  # a safe distance of 10 from obstacles
     k=(new_vertex.y-new_vertex.last.y)/(new_vertex.x-new_vertex.last.x)
     if (new_vertex.x<290 and new_vertex.y>390 and new_vertex.y<430) or (new_vertex.x>210 and new_vertex.y>240 and new_vertex.y<280):
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-400)*(new_vertex.last.y-400)<0 and (new_vertex.x-280)*(new_vertex.last.x-280)<0 and new_vertex.last.y+k*(280-new_vertex.last.x)>400:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-420)*(new_vertex.last.y-420)<0 and (new_vertex.x-280)*(new_vertex.last.x-280)<0 and new_vertex.last.y+k*(280-new_vertex.last.x)<420:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-250)*(new_vertex.last.y-250)<0 and (new_vertex.x-220)*(new_vertex.last.x-220)<0 and new_vertex.last.y+k*(220-new_vertex.last.x)>250:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-270)*(new_vertex.last.y-270)<0 and (new_vertex.x-220)*(new_vertex.last.x-220)<0 and new_vertex.last.y+k*(220-new_vertex.last.x)<270:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     else:
       tree.append(new_vertex)
 
-def oscillation_test_1(new_vertex_1):
+def collision_test_1(new_vertex_1):   # a safe distance of 10 from obstacles
     k=(new_vertex_1.y-new_vertex_1.last.y)/(new_vertex_1.x-new_vertex_1.last.x)
     if (new_vertex_1.x<290 and new_vertex_1.y>390 and new_vertex_1.y<430) or (new_vertex_1.x>210 and new_vertex_1.y>240 and new_vertex_1.y<280):
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex_1.y-400)*(new_vertex_1.last.y-400)<0 and (new_vertex_1.x-280)*(new_vertex_1.last.x-280)<0 and new_vertex_1.last.y+k*(280-new_vertex_1.last.x)>400:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex_1.y-420)*(new_vertex_1.last.y-420)<0 and (new_vertex_1.x-280)*(new_vertex_1.last.x-280)<0 and new_vertex_1.last.y+k*(280-new_vertex_1.last.x)<420:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex_1.y-250)*(new_vertex_1.last.y-250)<0 and (new_vertex_1.x-220)*(new_vertex_1.last.x-220)<0 and new_vertex_1.last.y+k*(220-new_vertex_1.last.x)>250:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex_1.y-270)*(new_vertex_1.last.y-270)<0 and (new_vertex_1.x-220)*(new_vertex_1.last.x-220)<0 and new_vertex_1.last.y+k*(220-new_vertex_1.last.x)<270:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     else:
       tree_1.append(new_vertex_1)
 
@@ -137,8 +137,8 @@ while running:
             if distance([x.x,x.y],[new_vertex_1.x,new_vertex_1.y])<neighborhood and x.cost+distance([x.x,x.y],[new_vertex_1.x,new_vertex_1.y])<new_vertex_1.cost:
               new_vertex_1.last=x
               new_vertex_1.cost=x.cost+distance([x.x,x.y],[new_vertex_1.x,new_vertex_1.y]) 
-          oscillation_test(new_vertex)
-          oscillation_test_1(new_vertex_1)
+          collision_test(new_vertex)
+          collision_test_1(new_vertex_1)
           pygame.draw.line(screen,black,[vertex.x,vertex.y],[new_vertex.x,new_vertex.y])
           pygame.draw.line(screen,black,[vertex_1.x,vertex_1.y],[new_vertex_1.x,new_vertex_1.y])
           pygame.display.flip() 

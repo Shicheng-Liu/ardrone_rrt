@@ -52,18 +52,18 @@ def choose_neighborhood(tree):
     else:
       return 30
 
-def oscillation_test(new_vertex):    #a safe distance of 10 from obstacles
+def collision_test(new_vertex):    #a safe distance of 10 from obstacles
     k=(new_vertex.y-new_vertex.last.y)/(new_vertex.x-new_vertex.last.x)
     if (new_vertex.x<290 and new_vertex.y>390 and new_vertex.y<430) or (new_vertex.x>210 and new_vertex.y>240 and new_vertex.y<280):
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-390)*(new_vertex.last.y-390)<0 and (new_vertex.x-290)*(new_vertex.last.x-290)<0 and new_vertex.last.y+k*(290-new_vertex.last.x)>390:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-430)*(new_vertex.last.y-430)<0 and (new_vertex.x-290)*(new_vertex.last.x-290)<0 and new_vertex.last.y+k*(290-new_vertex.last.x)<430:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-240)*(new_vertex.last.y-240)<0 and (new_vertex.x-210)*(new_vertex.last.x-210)<0 and new_vertex.last.y+k*(210-new_vertex.last.x)>240:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     elif (new_vertex.y-280)*(new_vertex.last.y-280)<0 and (new_vertex.x-210)*(new_vertex.last.x-210)<0 and new_vertex.last.y+k*(210-new_vertex.last.x)<280:
-      print("delete this new vertex because of oscillation")
+      print("delete this new vertex because of collision")
     else:
       tree.append(new_vertex)
 
@@ -107,7 +107,7 @@ while running:
             if distance([x.x,x.y],[new_vertex.x,new_vertex.y])<neighborhood and x.cost+distance([x.x,x.y],[new_vertex.x,new_vertex.y])<new_vertex.cost:
               new_vertex.last=x
               new_vertex.cost=x.cost+distance([x.x,x.y],[new_vertex.x,new_vertex.y]) 
-          oscillation_test(new_vertex)
+          collision_test(new_vertex)
           pygame.draw.line(screen,black,[vertex.x,vertex.y],[new_vertex.x,new_vertex.y])
           pygame.display.flip()
           if distance([new_vertex.x,new_vertex.y],[target.x,target.y])<radius:

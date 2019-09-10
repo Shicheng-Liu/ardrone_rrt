@@ -32,7 +32,7 @@ def step(x1,x2):  # greedy strategy
   k = (x2[1]-x1[1])/(x2[0]-x1[0])
   b = x1[1]-k*x1[0]
   count = 0
-  # oscillation test: safe distance of 10 from obstacles
+  # collision test: safe distance of 10 from obstacles
   if (x1[1]-430)*(x2[1]-430)<=0 and (430-b)/k<=290:
     count+=1
   if (x1[1]-390)*(x2[1]-390)<=0 and (390-b)/k<=290:
