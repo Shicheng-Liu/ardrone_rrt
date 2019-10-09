@@ -22,7 +22,7 @@ The demo is shown below:
 
 ![image](https://github.com/Shicheng-Liu/ardrone_rrt/blob/master/ardrone_rrt_star.gif)
 <br>
-Compared to RRT, you can find that the path drawn by RRT* is more smooth. That is because before any new vertex added in the tree, the program will search the shortest path around its neighborhood.
+Compared to RRT, you can find that the path drawn by RRT* is more smooth. That is because before any new vertex added in the tree, the program will search the shortest path around its neighborhood and rewire. You may find that this demo draws the path the first time the tree touches the target. However, since RRT* is asymptotic optimal, you can see [here](https://github.com/Shicheng-Liu/ardrone_rrt/tree/master/rrt_star_asymptotic_optimal) to get the idea.
 <br>
 Then, we have a new way called RRT-connect, which is an upgrade version of RRT. It has two differences: 1. Using greedy method, so you will see the length of each step is far longer. 2. Using bidirectional search: both the drone and the target will track the same random vertex.
 
