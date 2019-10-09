@@ -42,4 +42,4 @@ Now, it works quite well.
 
 Realize RRT algorithm on ardrone
 --
-Here, I use gazebo simulation to implement RRT algorithm on ardrone. This work is based on tum_simulator and ardrone_tutorial. Refer [here]()
+Here, I use gazebo simulation to implement RRT algorithm on ardrone. This work is based on tum_simulator and ardrone_tutorial. Refer [here](https://github.com/Shicheng-Liu/ardrone_rrt_gazebo_simulation)
