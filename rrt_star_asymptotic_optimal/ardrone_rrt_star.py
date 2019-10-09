@@ -5,7 +5,7 @@ from math import *
 length=500
 width=700
 step_length=10
-vertex_number=5000
+vertex_number=2000
 
 running=1
 pygame.init()
@@ -152,9 +152,8 @@ while running:
           pygame.draw.rect(screen, (0,0,0), (0,400,280,20), 0)
           pygame.draw.rect(screen, (0,0,0), (220,250,280,20), 0)
           pygame.display.flip()
-          if distance([new_vertex.x,new_vertex.y],[target.x,target.y])<radius:
-            path_choose(tree,drone,target)
-            break
+        path_choose(tree,drone,target)
+
     
     
 
